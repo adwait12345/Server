@@ -15,7 +15,7 @@ app.use(express.json())
 const subscribersRouter = require('./routes/subscribers')
 app.use('/subscribers', subscribersRouter)
 
-const PORT = process.env.PORT ;
+let PORT = process.env.PORT ;
 app.listen(PORT || 5000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   });
