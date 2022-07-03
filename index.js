@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser:true})
 
 const db = mongoose.connection
 db.on('error', (error)=> console.error(error))
@@ -15,4 +15,7 @@ app.use(express.json())
 const subscribersRouter = require('./routes/subscribers')
 app.use('/subscribers', subscribersRouter)
 
-app.listen(process.env.PORT || 3001, ()=> console.log('Server Started'))
+const PORT = process.env.PORT ;
+app.listen(PORT || 5000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
