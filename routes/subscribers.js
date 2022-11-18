@@ -17,7 +17,7 @@ router.get("/:id", getSubscriber, (req, res) => {
 // Creating one
 router.post("/", async (req, res) => {
   const subscriber = new Subscriber({
-    email: req.body.email,
+    email: req.body.email, 
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     phone: req.body.phone,
