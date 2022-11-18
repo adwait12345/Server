@@ -1,8 +1,12 @@
 require("dotenv").config();
-const express = require("express");
+const express = require('express')
+
 const app = express();
 const mongoose = require("mongoose");
-
+var cors = require('cors');
+let PORT = process.env.PORT;
+// use it before all route definitions
+app.use(cors({origin: PORT || 3001}));
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -18,8 +22,8 @@ app.get("/", (req, res) => {
 const subscribersRouter = require("./routes/subscribers");
 app.use("/subscribers", subscribersRouter);
 
-let PORT = process.env.PORT;
-app.listen(PORT || 5000, function () {
+
+app.listen(PORT || 3001, function () {
   console.log(
     "Express server listening on port %d in %s mode",
     this.address().port,
