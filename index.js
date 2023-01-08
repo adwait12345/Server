@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 var cors = require('cors');
 let PORT = process.env.PORT;
 // use it before all route definitions
-app.use(cors({origin: PORT || 3001}));
+app.use(cors({origin: PORT || 5000}));
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -23,7 +23,7 @@ const subscribersRouter = require("./routes/subscribers");
 app.use("/subscribers", subscribersRouter);
 
 
-app.listen(PORT || 3001, function () {
+app.listen(PORT || 5000, function () {
   console.log(
     "Express server listening on port %d in %s mode",
     this.address().port,
