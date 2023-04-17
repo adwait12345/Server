@@ -8,32 +8,27 @@ const subscriberSchema = new mongoose.Schema({
   data: [
     {
 
-      transactionhash: {
+      email: {
         type: String,
         required: true,
         unique:true
        
       },
-      currentNetwork: {
+      firstname: {
         type: String,
         required: true,
       },
-      transactionreciver: {
+      lastname: {
         type: String,
         required: true,
       },
-      transactiontype: {
+     reason: {
         type: String,
         required: true,
       },
-      amount: {
-        type: String,
-        required: true,
-      },
-      time: {
-        type: String,
-        required: true,
-      },
+      status:{
+        type:String,
+      }
     }
   ],
 });

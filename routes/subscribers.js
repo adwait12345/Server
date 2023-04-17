@@ -36,14 +36,14 @@ router.post('/', (req, res) => {
 
 
 // // getting all
-// router.get("/", async (req, res) => {
-//   try {
-//     const subscribers = await Subscriber.find();
-//     res.json(subscribers);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// });
+router.get("/", async (req, res) => {
+  try {
+    const subscribers = await Subscriber.find();
+    res.json(subscribers);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 // //getting one
 // router.get("/:id", getSubscriber, (req, res) => {
 //   res.json(res.subscriber);
@@ -67,29 +67,21 @@ router.post('/', (req, res) => {
 //   }
 // });
 // // Updating one
-// router.patch("/:id", getSubscriber, async (req, res) => {
-//   if (req.body.walletaddress != null) {
-//     res.subscriber.walletaddress = req.body.walletaddress;
-//   }
-//   if (req.body.transactionhash != null) {
-//     res.subscriber.transactionhash = req.body.transactionhash;
-//   }
-//   if (req.body.transactiontype != null) {
-//     res.subscriber.transactiontype = req.body.transactiontype;
-//   }
-//   if (req.body.amount != null) {
-//     res.subscriber.amount = req.body.amount;
-//   } 
-//    if (req.body.time != null) {
-//     res.subscriber.time = req.body.time;
-//   }
-//   try {
-//     const updatedSubscriber = await res.subscriber.save();
-//     res.json(updatedSubscriber);
-//   } catch (err) {
-//     res.status(400).json({ message: err.message });
-//   }
-// });
+router.patch("/:id",async (req, res) => {
+
+  if (req.body.uniqueId != null) {
+    res.subscriber.uniqueId = req.body.uniqueId;
+  }
+  if (req.body.data != null) {
+    res.subscriber.data = req.body.data;
+  }
+  try {
+    const updatedSubscriber = await res.subscriber.save();
+    res.json(updatedSubscriber);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 // // Deleating one
 // router.delete("/:id", getSubscriber, async (req, res) => {
 //   try {
